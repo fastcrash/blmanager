@@ -28,8 +28,8 @@ public class PlayerService {
 
     public Player removePlayerById(Long id) {
         if (playerRepository.existsById(id)) {
-            Player player = playerRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Player not found"));
+            Player player = playerRepository.findById(id).get();
+                    
             playerRepository.deleteById(id);
             return player;
         } else {
@@ -47,8 +47,7 @@ public class PlayerService {
 
     public Player scoreGoal(Long id) {
         if (playerRepository.existsById(id)) {
-            Player player = playerRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Player not found"));
+            Player player = playerRepository.findById(id).get();
             player.setGoalsScored(player.getGoalsScored() + 1);
             return playerRepository.save(player);
         } else {
@@ -68,8 +67,7 @@ public class PlayerService {
 
     public Player addYellowCard(Long id) {
         if (playerRepository.existsById(id)) {
-            Player player = playerRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Player not found"));
+            Player player = playerRepository.findById(id).get();
             player.setYellowCards(player.getYellowCards() + 1);
             return playerRepository.save(player);
         } else {
