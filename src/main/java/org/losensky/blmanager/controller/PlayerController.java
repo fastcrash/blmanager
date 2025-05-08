@@ -30,5 +30,14 @@ public class PlayerController {
     }
     
 
+    @GetMapping("/top10")
+    public String getTop10Players() {
+        return "<table>" +
+                "<tr><th>Player Name</th><th>Goals Scored</th></tr>" +
+                playerService.getTopScorer().stream()
+                        .map(player -> "<tr><td>" + player.getName() + "</td><td>" + player.getGoalsScored() + "</td></tr>")
+                        .reduce("", String::concat) +
+                "</table>";
+    }
 
 }

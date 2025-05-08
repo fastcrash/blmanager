@@ -32,6 +32,16 @@ public class ClubController {
         return clubService.getAllClubs();
     }
 
+    @GetMapping("/tabelle")
+    public String getClubsTable() {
+        return "<table>" +
+                "<tr><th>Name</th><th>Punkte</th><th>Tore</th><th>S</th><th>U</th><th>N</th></tr>" +
+                clubService.getAllClubs().stream()
+                        .map(club -> "<tr><td>" + club.getName() + "</td><td>" + club.getPoints() + "</td><td>" + club.getGoalsFor() +":"+club.getGoalsAgainst()+ "</td><td>" + club.getWins() + "</td><td>" + club.getDraws() + "</td><td>" + club.getLosses() + "<td></tr>")
+                        .reduce("", String::concat) +
+                "</table>";
+    }
+
     @GetMapping("/{id}")
     public Club getClubById(@PathVariable Long id) {
         return clubService.getClubById(id).orElseThrow(() -> new IllegalArgumentException("Club not found"));

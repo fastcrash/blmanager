@@ -77,4 +77,7 @@ public class PlayerService {
         }
     }
 
+    public List<Player> getTopScorer() {
+        return playerRepository.findTop10ByOrderByGoalsScoredDesc();
+    }
 }

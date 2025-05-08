@@ -10,6 +10,5 @@ public interface ClubRepository extends JpaRepository<Club, Long> {
     // For example, find clubs by name or points
     Optional<Club> findByName(String name);    
     List<Club> findByPoints(int points);
-    List<Club> findAllByOrderByPointsDesc(); // Example of a custom query to get clubs ordered by points
-        
+    List<Club> findAllByOrderByPointsDesc(); // Example of a custom query to get clubs ordered by points   
 }

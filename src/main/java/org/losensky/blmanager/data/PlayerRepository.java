@@ -11,6 +11,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     // For example, find players by club or position
     List<Player> findByClub(Club club);
     List<Player> findByPosition(String position);    
+    List<Player> findTop10ByOrderByGoalsScoredDesc();
   
     
 }

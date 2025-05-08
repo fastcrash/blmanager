@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.losensky.blmanager.Utils.MatchUtils;
 import org.losensky.blmanager.data.Club;
+import org.losensky.blmanager.data.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -25,17 +26,17 @@ public class MatchService {
     }
 
     public String simulateMatch() {
-        // Get the clubs
+      
         List<Club> clubs = matchUtils.getRandomClubs();
         Club homeClub = clubs.get(0);
         Club awayClub = clubs.get(1);
 
-        // Simulate the match
+      
         int[] score = matchUtils.getRandomScore();
         int homeScore = score[0];
         int awayScore = score[1];
 
-        // Update the clubs' points and goals
+  
         homeClub.setPoints(homeClub.getPoints() + (homeScore > awayScore ? 3 : (homeScore == awayScore ? 1 : 0)));
         homeClub.setGoalsFor(homeClub.getGoalsFor() + homeScore);
         homeClub.setGoalsAgainst(homeClub.getGoalsAgainst() + awayScore);
@@ -46,6 +47,10 @@ public class MatchService {
             homeClub.setDraws(homeClub.getDraws() + 1);
         } else {
             homeClub.setLosses(homeClub.getLosses() + 1);
+        }
+        for (int i = 0; i < homeScore; i++) {            
+            Player scorer = playerService.scoreGoal(matchUtils.getRandomPlayerFromClub(homeClub.getId()).getId());
+            log.info("Goal scored by player: " + scorer.getName() + " from club: " + homeClub.getName());
         }
 
 
@@ -60,11 +65,11 @@ public class MatchService {
         } else {
             awayClub.setLosses(awayClub.getLosses() + 1);
         }
-        
-        // Update the players' stats (goals, cards, etc.)
-        // This is a simplified example; you might want to update individual player stats based on the match events
+        for (int i = 0; i < awayScore; i++) {            
+            Player scorer = playerService.scoreGoal(matchUtils.getRandomPlayerFromClub(homeClub.getId()).getId());
+            log.info("Goal scored by player: " + scorer.getName() + " from club: " + awayClub.getName());
+        }
 
-        // Save the updated clubs
         clubService.updateClub(homeClub);
         clubService.updateClub(awayClub);
         
