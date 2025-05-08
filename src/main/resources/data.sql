@@ -44,7 +44,7 @@ INSERT INTO player (name, position, goals_scored, yellow_cards, red_cards, club_
 -- Dortmund
 ('Julian Brandt', 'Midfielder', 5, 1, 0, 5),
 ('Marco Reus', 'Midfielder', 4, 1, 0, 5),
-('Mats Hummels', 'Defender', 2, 3, 0, 5);
+('Mats Hummels', 'Defender', 2, 3, 0, 5),
 
 
 
@@ -96,7 +96,7 @@ INSERT INTO player (name, position, goals_scored, yellow_cards, red_cards, club_
 ('Emre Can', 'Midfielder', 2, 7, 1, 5),
 ('Marcel Sabitzer', 'Midfielder', 3, 4, 0, 5),
 ('Karim Adeyemi', 'Striker', 4, 2, 0, 5),
-('Niclas Füllkrug', 'Striker', 7, 2, 0, 5);
+('Niclas Füllkrug', 'Striker', 7, 2, 0, 5),
 
 
 -- Frankfurt
@@ -163,10 +163,6 @@ INSERT INTO player (name, position, goals_scored, yellow_cards, red_cards, club_
 ('Jens Stage', 'Midfielder', 2, 4, 0, 10),
 ('Marvin Ducksch', 'Striker', 7, 2, 0, 10),
 ('Rafael Borré', 'Striker', 4, 3, 0, 10),
-
--- Rest der Teams folgt im nächsten Block...
-
-// ...existing code...
 
 -- Borussia Mönchengladbach
 ('Moritz Nicolas', 'Goalkeeper', 0, 1, 0, 11),
