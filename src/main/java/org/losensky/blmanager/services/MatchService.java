@@ -37,8 +37,30 @@ public class MatchService {
 
         // Update the clubs' points and goals
         homeClub.setPoints(homeClub.getPoints() + (homeScore > awayScore ? 3 : (homeScore == awayScore ? 1 : 0)));
-        awayClub.setPoints(awayClub.getPoints() + (awayScore > homeScore ? 3 : (awayScore == homeScore ? 1 : 0)));
+        homeClub.setGoalsFor(homeClub.getGoalsFor() + homeScore);
+        homeClub.setGoalsAgainst(homeClub.getGoalsAgainst() + awayScore);
+        homeClub.setGamesPlayed(homeClub.getGamesPlayed() + 1); 
+        if (homeScore > awayScore) {
+            homeClub.setWins(homeClub.getWins() + 1);
+        } else if (homeScore == awayScore) {
+            homeClub.setDraws(homeClub.getDraws() + 1);
+        } else {
+            homeClub.setLosses(homeClub.getLosses() + 1);
+        }
 
+
+        awayClub.setPoints(awayClub.getPoints() + (awayScore > homeScore ? 3 : (awayScore == homeScore ? 1 : 0)));
+        awayClub.setGoalsFor(awayClub.getGoalsFor() + awayScore);
+        awayClub.setGoalsAgainst(awayClub.getGoalsAgainst() + homeScore);
+        awayClub.setGamesPlayed(awayClub.getGamesPlayed() + 1);
+        if (awayScore > homeScore) {
+            awayClub.setWins(awayClub.getWins() + 1);
+        } else if (awayScore == homeScore) {
+            awayClub.setDraws(awayClub.getDraws() + 1);
+        } else {
+            awayClub.setLosses(awayClub.getLosses() + 1);
+        }
+        
         // Update the players' stats (goals, cards, etc.)
         // This is a simplified example; you might want to update individual player stats based on the match events
 

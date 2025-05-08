@@ -11,7 +11,7 @@ RUN ./mvnw package -DskipTests
 
 EXPOSE 8080
 
-# Set environment variables
+
 ENV DB_USERNAME=${DB_USERNAME}
 ENV DB_PASSWORD=${DB_PASSWORD}
 ENV DB_URL=${DB_URL}
