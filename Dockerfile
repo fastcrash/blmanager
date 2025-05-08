@@ -14,6 +14,7 @@ EXPOSE 8080
 # Set environment variables
 ENV DB_USERNAME=${DB_USERNAME}
 ENV DB_PASSWORD=${DB_PASSWORD}
+ENV DB_URL=${DB_URL}
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "target/blmanager-0.0.1-SNAPSHOT.jar"]
