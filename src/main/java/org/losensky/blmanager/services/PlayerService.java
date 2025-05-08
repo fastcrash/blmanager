@@ -58,8 +58,7 @@ public class PlayerService {
 
     public Player addRedCard(Long id) {
         if (playerRepository.existsById(id)) {
-            Player player = playerRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Player not found"));
+            Player player = playerRepository.findById(id).get();
             player.setRedCards(player.getRedCards() + 1);
             return playerRepository.save(player);
         } else {

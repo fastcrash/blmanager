@@ -23,7 +23,7 @@ public class ClubService {
 
     public Club removeClubById(Long id) {
         if (clubRepository.existsById(id)) {
-            Club club = clubRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Club not found"));
+            Club club = clubRepository.findById(id).get();
             clubRepository.deleteById(id);
             return club;
         } else {

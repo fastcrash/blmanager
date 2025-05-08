@@ -23,6 +23,6 @@ public class MatchController {
         
         return matchService.simulateMatch();
     }
-    
+
     
 }
